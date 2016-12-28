@@ -1,0 +1,17 @@
+{
+  "name": "witty-fiddle-YHAO664NCDCREMFRSH2OJ5PVY62GL22D",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "express": "4.13.4",
+    "firebase": "^3.4.0",
+    "node-fetch": "1.6.0",
+    "node-wit": "4.2.0",
+    "node-uuid": "^1.4.7"
+  },
+  "engines": {
+    "node": ">=6.2.2"
+  }
+}
