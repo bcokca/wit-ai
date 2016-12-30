@@ -168,9 +168,9 @@ function createActions() {
             TurnHeaterOff: TurnHeaterOff
         };
 
-        function TurnHeaterOff(request) {
-            let context = request.context;
-            let entities = request.entities;
+        function TurnHeaterOff(req) {
+            let context = req.context;
+            let entities = req.entities;
             let on_off = firstEntityValue(entities, 'on_off');
 
             delete context.response;
@@ -179,9 +179,9 @@ function createActions() {
             return context;
         }
 
-        function TurnHeaterOn(request) {
-            let context = request.context;
-            let entities = request.entities;
+        function TurnHeaterOn(req) {
+            let context = req.context;
+            let entities = req.entities;
             let on_off = firstEntityValue(entities, 'on_off');
 
             delete context.response;
