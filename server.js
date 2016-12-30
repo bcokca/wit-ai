@@ -5,6 +5,8 @@ var bodyParser = require('body-parser');
 var firebase = require('firebase');
 var uuid = require('node-uuid');
 
+var request = require('request'); //http requests
+
 var WIT_TOKEN = 'YHAO664NCDCREMFRSH2OJ5PVY62GL22D';
 var PAGE_TOKEN = 'EAAShMI0CdhgBAEzpKayA0JYdgwNKwnifktaZBD1iJcmUOVFMBu08k08x135r442vKBWv7xYZBrquo9SFnfEeqzf0ZAZAhHEKrQkQ3KKGQTVBRG4fQYbJsPXYDoPW1uSDCnjVg2991vPq21XOkX0KYnzWx5yXZBf0p1zsaGPgOLgZDZD';
 
@@ -183,6 +185,31 @@ function createActions() {
             let on_off = firstEntityValue(entities, 'on_off');
 
             delete context.response;
+
+            // Set the headers
+            var headers = {
+                'User-Agent':       'Super Agent/0.0.1',
+                'Content-Type':     'application/x-www-form-urlencoded'
+            };
+
+            // Configure the request
+            var options = {
+                url: 'https://chrome-extension-translator.herokuapp.com/translate',
+                method: 'POST',
+                headers: headers,
+                form: {'from': 'tr', 'to': 'en', 'text': 'Senin Adin Ne?'}
+            };
+
+            // Start the request
+            request(options, function (error, response, body) {
+                if (!error && response.statusCode == 200) {
+                    // Print out the response body
+                    console.log(body);
+                }
+                // res.send(body);
+            });
+
+
 
             context.response = 'Turning the Heater On: on_off= ' + on_off;
             return context;
